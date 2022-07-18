@@ -5,6 +5,7 @@ import './Home.css'
 function Home() {
   const [allPokemon, setAllPokemon] = useState([])
   const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon/')
+  const [searchInput, setSearchInput] = useState("")
 
   const getAllPokemons = async () => {
     const pokemons = await fetch(loadMore)
@@ -31,9 +32,16 @@ function Home() {
   return (
     <div className="App">
       <h1>Pokemon Index</h1>
+      <input onChange={(e) => setSearchInput(e.target.value)}></input>
       <div className='pokemon-container'>
         <div className='all-container'>
-          {allPokemon.map((pokemon, index) => {
+          {allPokemon.filter(pokemon => {
+            if(searchInput === ""){
+              return pokemon
+            }else if(pokemon.name.toLowerCase().includes(searchInput.toLowerCase())){
+              return pokemon
+            }
+          }).map((pokemon, index) => {
             return(
               <PokemonThumb pokemon={pokemon} key={index}/>
               )
