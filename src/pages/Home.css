@@ -17,6 +17,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+.search-bar{
+  width: 90%;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+}
+
 .rock {
   background-color: rgb(148, 81, 81);
 }

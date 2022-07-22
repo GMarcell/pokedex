@@ -32,7 +32,7 @@ function Home() {
   return (
     <div className="App">
       <h1>Pokemon Index</h1>
-      <input onChange={(e) => setSearchInput(e.target.value)}></input>
+      <input className='search-bar' onChange={(e) => setSearchInput(e.target.value)}></input>
       <div className='pokemon-container'>
         <div className='all-container'>
           {allPokemon.filter(pokemon => {
