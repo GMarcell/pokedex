@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import PokemonDetails from '../components/PokemonDetails'
 import PokemonThumb from '../components/PokemonThumb'
-import './Home.css'
+import './css/Home.css'
 
 function Home() {
   const [allPokemon, setAllPokemon] = useState([])
   const [loadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon/')
   const [searchInput, setSearchInput] = useState("")
+  const [isOpen, setIsOpen] = useState(false)
+
+  const togglePopUp = async () => {
+    setIsOpen(!isOpen)
+    console.log(isOpen);
+}
 
   const getAllPokemons = async () => {
     const pokemons = await fetch(loadMore)
