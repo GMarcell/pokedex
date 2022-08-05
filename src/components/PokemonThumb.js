@@ -3,15 +3,14 @@ import '../pages/css/Home.css'
 import PokemonDetails from './PokemonDetails'
 
 function PokemonThumb({pokemon}) {
+    const [abilities, setAbilities] = useState([])
 
     const [isOpen, setIsOpen] = useState(false)
     const togglePopUp = async () => {
         setIsOpen(!isOpen)
-        console.log(isOpen);
     }
 
     const containerStyle = `container thumb-container ${pokemon.types[0].type.name}`
-    const style = `thumb-container ${pokemon.types[0].type.name}`
     return (
         <div className={containerStyle}>
             <div onClick={togglePopUp}>
