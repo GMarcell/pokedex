@@ -2,7 +2,7 @@ import React from 'react'
 import '../pages/Home.css'
 
 function PokemonDetails({handleClose, pokemon}) {
-  console.log(pokemon.abilities);
+  console.log(pokemon.stats);
   const style = `details thumb-container ${pokemon.types[0].type.name}`
   return (
     <div className={style}>
@@ -13,12 +13,14 @@ function PokemonDetails({handleClose, pokemon}) {
             <img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name}/>
           </div>
           <div>
-            <h3>Abilities</h3>
+            <h3>Stats</h3>
             <ul>
-            {pokemon.abilities.map(ability => {
+            {pokemon.stats.map(stat => {
               return (
                 <li>
-                  {ability.ability.name}
+                  <p>
+                    {stat.stat.name} : {stat.base_stat}
+                  </p>
                 </li>
                 )
               })}
