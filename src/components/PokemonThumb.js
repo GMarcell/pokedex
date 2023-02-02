@@ -1,31 +1,36 @@
 import React, { useState } from 'react'
-import '../pages/css/Home.css'
+import '../pages/Home.css'
 import PokemonDetails from './PokemonDetails'
 
 function PokemonThumb({pokemon}) {
-    const [abilities, setAbilities] = useState([])
+  const [abilities, setAbilities] = useState([])
 
-    const [isOpen, setIsOpen] = useState(false)
-    const togglePopUp = async () => {
-        setIsOpen(!isOpen)
-    }
+  const [isOpen, setIsOpen] = useState(false)
+  const togglePopUp = async () => {
+    setIsOpen(!isOpen)
+  }
 
-    const containerStyle = `container thumb-container ${pokemon.types[0].type.name}`
-    return (
-        <div className={containerStyle}>
-            <div onClick={togglePopUp}>
-                <div className='number'>
-                    <small>#0{pokemon.id}</small>
-                </div>
-                <img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name}/>
-                <div className='detail-wrapper'>
-                    <h3>{pokemon.name}</h3>
-                    <small>Type: {pokemon.types[0].type.name}</small>
-                </div>
+  const containerStyle = `container thumb-container ${pokemon.types[0].type.name}`
+  return (
+    <div className={containerStyle}>
+      <div onClick={togglePopUp} style={{display: 'flex'}}>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
+          <div className='detail-wrapper'>
+            <h3>{pokemon.name}</h3>
+          </div>
+          {pokemon.types.map((element) => {
+            return(
+            <div className='number'>
+              <small>{element.type.name}</small>
             </div>
-            {isOpen && <PokemonDetails handleClose={togglePopUp} pokemon={pokemon}/>}
+            )
+          })}
         </div>
-    )
+        <img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name}/>
+      </div>
+      {isOpen && <PokemonDetails handleClose={togglePopUp} pokemon={pokemon}/>}
+    </div>
+  )
 }
 
 export default PokemonThumb

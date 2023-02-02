@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PokemonDetails from '../components/PokemonDetails'
 import PokemonThumb from '../components/PokemonThumb'
-import './css/Home.css'
+import './Home.css'
 
 function Home() {
   const [allPokemon, setAllPokemon] = useState([])
